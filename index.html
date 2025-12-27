@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Shive 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(0,0,0,0.25);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 90%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .time {
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .wish {
+      font-size: 1.8rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 id="title">Countdown to something special 💫</h1>
+  <div class="time" id="countdown">Loading...</div>
+
+  <div class="wish hidden" id="wish">
+    🎉 Happy 20th Birthday Shive 🎂<br><br>
+    May your life be filled with happiness, success and love 💖<br>
+    Have an amazing year ahead ✨
+  </div>
+</div>
+
+<script>
+  // 🎯 TARGET TIME: TODAY at 8:25 PM
+  const targetTime = new Date();
+  targetTime.setHours(20, 25, 0, 0); // 8:25 PM
+
+  const countdownEl = document.getElementById("countdown");
+  const wishEl = document.getElementById("wish");
+  const titleEl = document.getElementById("title");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetTime - now;
+
+    if (diff <= 0) {
+      countdownEl.classList.add("hidden");
+      titleEl.textContent = "🎊 It’s Time 🎊";
+      wishEl.classList.remove("hidden");
+      return;
+    }
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownEl.textContent =
+      `${hours}h ${minutes}m ${seconds}s remaining`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
+</body>
+</html>
